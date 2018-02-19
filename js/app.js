@@ -61,11 +61,22 @@ new Vue({
     },
 
     heal: function() {
+      if (this.playerHealth <= 93) {
+        this.playerHealth += 7;
+      } else {
+        this.playerHealth = 100;
+      }
 
+      this.monsterAttack(
+        this.monsterAttackValues.min,
+        this.monsterAttackValues.max
+      );
+
+      this.checkWin();
     },
 
     giveUp: function() {
-
+      this.gameIsRunning = false;
     },
 
     // Helper functions
